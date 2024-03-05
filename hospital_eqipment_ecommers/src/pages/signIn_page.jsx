@@ -22,28 +22,24 @@ function SignInPage() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
   
     try {
-      // Make a POST request to the authentication endpoint
       const response = await axios.post(
-        'http://localhost:8082/authenticate',
+        'http://localhost:8080/api/v2/users/login',  // Update the endpoint
         formData,
         { withCredentials: true, headers: { 'Content-Type': 'application/json' } }
       );
   
-      // Handle the authentication success (you may want to store a token or user information)
-      console.log('Authentication successful:', response.data);
+      console.log('Login successful:', response.data);
   
-      // You can redirect the user or perform any other actions here
+      // You can handle the response data here based on your backend changes
+  
+      // Redirect the user or perform other actions
+      navigate("/");
     } catch (error) {
       // Handle authentication failure
-      console.error('Authentication failed:', error.message);
+      console.error('Login failed:', error.message);
     }
-    console.log(a);
-    a=a+1;
-    console.log(a); 
-    navigate("/");
   };
   
 
